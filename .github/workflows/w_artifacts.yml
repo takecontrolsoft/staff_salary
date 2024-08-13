@@ -41,7 +41,7 @@ jobs:
           working_dir: file_rename
           xgo_version: latest
           go_version: ${{ inputs.go_version }}
-          dest: file_rename/build
+          dest: build
           prefix: file_rename${{ inputs.release }}
           targets: ${{ matrix.os != 'macos' && matrix.os || 'darwin'}}/${{ matrix.architecture }}
           v: true
@@ -70,4 +70,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         with:
           upload_url: ${{ inputs.release_url }}
-          assets_path: file_rename/build/
+          assets_path: file_rename/build
