@@ -1,30 +1,12 @@
+# staff_sallary
+Automates staff salary processing.
 
-# How to contribute
+# File rename tool
+* This tool renames .тьт files from `Microinvest` Documents directory. The company name is added to the file names.
+* Company names are taken from `Client.xlsx` file. This file has to be in the current execution directory.
 
-## Get packages
-`go get github.com/takecontrolsoft/go_multi_log@v1.0.1`
-
-## Build go exe
-* to local folder - `go build -v ./...`
-
-* to bin folder `go build -o bin/`
-
-# How to run exe
-## Open exe help
-`bin/file_rename.exe /help`
-
-# Start documentation
-## To build documentation
-```bash
-go get golang.org/x/tools/cmd/godoc
-export GOPATH=$HOME/go 
-export GOROOT=/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-mkdir -p $GOPATH $GOPATH/src $GOPATH/pkg $GOPATH/bin
-go install golang.org/x/tools/cmd/godoc@latest
-godoc -http=:8081 -index
-```
-## Brows documentation
- http://localhost:8081/pkg/
+# Compatibility
+* Linux, Windows and Mac
+* Go lang 1.21
+* Ms Excel formats: XLAM / XLSM / XLSX / XLTM / XLTX
 
