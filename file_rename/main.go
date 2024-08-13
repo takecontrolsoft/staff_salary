@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/takecontrolsoft/go_multi_log/logger"
 	"github.com/takecontrolsoft/go_multi_log/logger/levels"
@@ -28,11 +31,22 @@ func main() {
 		return
 	}
 	for _, subitem := range subitems {
-		if !subitem.IsDir() {
-			logger.InfoF("File: %s", subitem.Name())
-			logger.Debug(m[""])
+		fn := subitem.Name()
+		fileExtension := filepath.Ext(fn)
+		if !subitem.IsDir() && fileExtension == ".txt" {
+			logger.InfoF("File: %s", fn)
+			for eik, name := range m {
+				if strings.Contains(fn, eik) && !strings.Contains(fn, fmt.Sprintf("%s_%s", name, eik)) {
+					newName := strings.ReplaceAll(fn, eik, fmt.Sprintf("%s_%s", name, eik))
+					os.Rename(fn, newName)
+					logger.InfoF("File '%s' renamed to '%s'", fn, newName)
+				}
+
+			}
 		}
 	}
+	logger.InfoF("File renaming completed successfully")
+
 }
 
 func ReadExcel(excelName string, sheetName string, eik string, name string) (map[string]string, bool) {

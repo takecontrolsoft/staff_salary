@@ -1,0 +1,11 @@
+2024/08/13 11:22:30 Row headers: ЕИК
+2024/08/13 11:22:30 Row headers: ИМЕ
+2024/08/13 11:22:30 EIK index: 0, NAME index: 1
+2024/08/13 11:22:30 Row index: 1
+2024/08/13 11:22:30 EIK: 1, NAME: д
+2024/08/13 11:22:30 Row index: 2
+2024/08/13 11:22:30 EIK: 2, NAME: dd
+2024/08/13 11:22:30 Row index: 3
+2024/08/13 11:22:30 EIK: 3, NAME: cc
+2024/08/13 11:22:30 File: er_д_1_er.txt
+2024/08/13 11:22:34 File 'er_д_1_er.txt' renamed to 'er_д_д_1_er.txt'
