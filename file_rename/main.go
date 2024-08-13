@@ -25,7 +25,13 @@ func main() {
 	if shouldReturn {
 		return
 	}
-	subitems, err := os.ReadDir(".")
+	dirname, err := os.UserHomeDir()
+	if err != nil {
+		logger.Error("Getting home path failed")
+		return
+	}
+	microDir := filepath.Join(dirname, "Documents", "Microinvest")
+	subitems, err := os.ReadDir(microDir)
 	if err != nil {
 		logger.Error("Getting files from current folder failed")
 		return
@@ -38,8 +44,8 @@ func main() {
 			for eik, name := range m {
 				if strings.Contains(fn, eik) && !strings.Contains(fn, fmt.Sprintf("%s_%s", name, eik)) {
 					newName := strings.ReplaceAll(fn, eik, fmt.Sprintf("%s_%s", name, eik))
-					os.Rename(fn, newName)
-					logger.InfoF("File '%s' renamed to '%s'", fn, newName)
+					os.Rename(filepath.Join(microDir, fn), filepath.Join(microDir, newName))
+					logger.InfoF("File '%s' renamed to '%s' in folder %s", fn, newName, microDir)
 				}
 
 			}
