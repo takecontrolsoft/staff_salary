@@ -33,7 +33,7 @@ func main() {
 	microDir := filepath.Join(dirname, "Documents", "Microinvest")
 	subitems, err := os.ReadDir(microDir)
 	if err != nil {
-		logger.Error("Getting files from current folder failed")
+		logger.ErrorF("Getting files from %s failed", microDir)
 		return
 	}
 	for _, subitem := range subitems {
