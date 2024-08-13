@@ -70,4 +70,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         with:
           upload_url: ${{ inputs.release_url }}
-          assets_path: ./file_rename/build/
+          assets_path: file_rename/build/
