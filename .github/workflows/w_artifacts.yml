@@ -37,7 +37,7 @@ jobs:
    
       - name: Build Cross-Platform
         uses: crazy-max/ghaction-xgo@v3
-       with:
+        with:
           working_dir: file_rename
           xgo_version: latest
           go_version: ${{ inputs.go_version }}
