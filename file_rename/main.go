@@ -37,12 +37,26 @@ func main() {
 	}
 	for _, subitem := range subitems {
 		fn := subitem.Name()
+		var newName = fn
 		fileExtension := filepath.Ext(fn)
 		if !subitem.IsDir() && strings.ToLower(fileExtension) == ".txt" {
 			logger.InfoF("File: %s", fn)
 			for eik, name := range m {
-				if strings.Contains(fn, eik) && !strings.Contains(fn, fmt.Sprintf("%s_%s", name, eik)) {
-					newName := strings.ReplaceAll(fn, eik, fmt.Sprintf("%s_%s", name, eik))
+				if strings.Contains(fn, eik) && !strings.Contains(fn, name) {
+					var dekl = 0
+					if strings.Contains(fn, "EMPL2021") {
+						dekl = 1
+						newName = strings.ReplaceAll(newName, "EMPL2021", "")
+					} else if strings.Contains(newName, "NRA62007") {
+						dekl = 6
+						newName = strings.ReplaceAll(newName, "NRA62007", "")
+					}
+					if dekl == 0 {
+						newName = strings.ReplaceAll(newName, eik, fmt.Sprintf("%s_%s", name, eik))
+					} else {
+						newName = strings.TrimLeft(newName, "_")
+						newName = strings.ReplaceAll(newName, eik, fmt.Sprintf("%s_(дек. %v)_%s", name, dekl, eik))
+					}
 					os.Rename(filepath.Join(currentDir, fn), filepath.Join(currentDir, newName))
 					logger.InfoF("File '%s' renamed to '%s' in folder %s", fn, newName, currentDir)
 				}
