@@ -38,7 +38,7 @@ func main() {
 	for _, subitem := range subitems {
 		fn := subitem.Name()
 		fileExtension := filepath.Ext(fn)
-		if !subitem.IsDir() && fileExtension == ".txt" {
+		if !subitem.IsDir() && strings.ToLower(fileExtension) == ".txt" {
 			logger.InfoF("File: %s", fn)
 			for eik, name := range m {
 				if strings.Contains(fn, eik) && !strings.Contains(fn, fmt.Sprintf("%s_%s", name, eik)) {
