@@ -4,6 +4,7 @@
 ## 1.0.1 Release notes (2024-08-20)
 ### Enhancements
 * Text file extension check is set to case insensitive.
+* Declaration document number added to the name of the file.
 
 ## 1.0.0 Release notes (2024-08-16)
 

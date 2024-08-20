@@ -42,14 +42,16 @@ func main() {
 		if !subitem.IsDir() && strings.ToLower(fileExtension) == ".txt" {
 			logger.InfoF("File: %s", fn)
 			for eik, name := range m {
-				if strings.Contains(fn, eik) && !strings.Contains(fn, name) {
+				if strings.Contains(fn, eik) && !strings.Contains(strings.ToUpper(fn), strings.ToUpper(name)) {
 					var dekl = 0
-					if strings.Contains(fn, "EMPL2021") {
+					if strings.Contains(strings.ToUpper(newName), "EMPL2021") {
 						dekl = 1
 						newName = strings.ReplaceAll(newName, "EMPL2021", "")
-					} else if strings.Contains(newName, "NRA62007") {
+						newName = strings.ReplaceAll(newName, "empl2021", "")
+					} else if strings.Contains(strings.ToUpper(newName), "NRA62007") {
 						dekl = 6
 						newName = strings.ReplaceAll(newName, "NRA62007", "")
+						newName = strings.ReplaceAll(newName, "nra62007", "")
 					}
 					if dekl == 0 {
 						newName = strings.ReplaceAll(newName, eik, fmt.Sprintf("%s_%s", name, eik))
