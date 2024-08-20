@@ -41,7 +41,7 @@ jobs:
           working_dir: file_rename
           xgo_version: latest
           go_version: ${{ inputs.go_version }}
-          dest: file_rename/build
+          dest: build
           prefix: file_rename${{ inputs.release }}
           targets: ${{ matrix.os != 'macos' && matrix.os || 'darwin'}}/${{ matrix.architecture }}
           v: true
@@ -53,7 +53,7 @@ jobs:
 
       - name: Rename files
         if: ${{ matrix.os == 'macos' }}
-        working-directory: file_rename/build
+        working-directory: build
         run: |  
            mv file_rename${{ inputs.release}}-darwin-${{ matrix.architecture }} file_rename${{ inputs.release}}-${{ matrix.os }}-${{ matrix.architecture }}
 
