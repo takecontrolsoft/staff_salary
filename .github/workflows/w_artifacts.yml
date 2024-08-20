@@ -53,9 +53,9 @@ jobs:
 
       - name: Rename files
         if: ${{ matrix.os == 'macos' }}
-        working-directory: file_rename/build/
+        working-directory: file_rename/build
         run: |  
-           mv file_rename${{ inputs.release }}-darwin-${{ matrix.architecture }} file_rename${{ inputs.release}}-${{ matrix.os }}-${{ matrix.architecture }}
+           mv file_rename-darwin-${{ matrix.architecture }} file_rename${{ inputs.release}}-${{ matrix.os }}-${{ matrix.architecture }}
 
       - name: Upload FileRename artifacts
         uses: actions/upload-artifact@v4
