@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/w_artifacts.yml
     secrets: inherit
     with:
-      os: '["macos"]'
+      os: '["linux", "windows", "macos"]'
       architectures: '["amd64", "arm64"]'
       go_version: ${{ vars.GO_VERSION }}
 
